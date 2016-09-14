@@ -3,7 +3,7 @@ require 'redis'
 
 REDIS_URL = ENV.fetch("REDISTOGO_URL", "redis://localhost:6379")
 
-get '/' do
+get '/salaurli' do
   erb :index
 end
 
