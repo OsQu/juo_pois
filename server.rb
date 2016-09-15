@@ -4,7 +4,7 @@ require 'redis'
 REDIS_URL = ENV.fetch("REDISTOGO_URL", "redis://localhost:6379")
 $redis = Redis.new(url: REDIS_URL)
 
-VALID_CODES = %w(salaurli smartly)
+VALID_CODES = %w(salaurli smartly test)
 
 get '/:code' do
   if VALID_CODES.include?(params[:code])
