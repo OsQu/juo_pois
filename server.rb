@@ -2,6 +2,7 @@ require 'sinatra'
 require 'redis'
 
 REDIS_URL = ENV.fetch("REDISTOGO_URL", "redis://localhost:6379")
+$redis = Redis.new(url: REDIS_URL)
 
 VALID_CODES = %w(salaurli smartly)
 
@@ -15,8 +16,7 @@ get '/:code' do
 end
 
 post '/record' do
-  redis = Redis.new(url: REDIS_URL)
-  redis.incr("kaljaa:#{params[:code]}")
+  $redis.incr("kaljaa:#{params[:code]}")
 
   @code = params[:code]
   erb :success
